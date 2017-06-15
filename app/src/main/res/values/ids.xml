@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="button_history" type="id" />
+    <item name="button_point" type="id" />
+    <item name="button_0" type="id" />
+    <item name="button_1" type="id" />
+    <item name="button_2" type="id" />
+    <item name="button_3" type="id" />
+    <item name="button_4" type="id" />
+    <item name="button_5" type="id" />
+    <item name="button_6" type="id" />
+    <item name="button_7" type="id" />
+    <item name="button_8" type="id" />
+    <item name="button_9" type="id" />
+    <item name="clean" type="id" />
+    <item name="button_back" type="id" />
+    <item name="button_plus" type="id" />
+    <item name="button_minus" type="id" />
+    <item name="button_product" type="id" />
+    <item name="button_divide" type="id" />
+    <item name="button_sign" type="id" />
+    <item name="button_equal" type="id" />
+</resources>
