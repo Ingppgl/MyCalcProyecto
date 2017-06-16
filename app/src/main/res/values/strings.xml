@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CalProyecto</string>
+    <string name="app_name">Calculator</string>
     <string name="my_divide">/</string>
     <string name="button_clean">AC</string>
     <string name="product">*</string>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.pedrogonzalez.mycalcproyecto.HistoryActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.example.pedrogonzalez.mycalcproyecto.HistoryActivity">
 
     <TextView
         android:id="@+id/screen"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="157dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@android:color/white"
         android:ellipsize="end"
         android:gravity="end"
-        android:textSize="40sp"
         android:maxLength="18"
-        android:maxLines="2"/>
+        android:maxLines="2"
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/clean"
@@ -28,7 +28,7 @@
         android:background="@color/colorAccent"
         android:text="@string/button_clean"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_divide"
@@ -40,7 +40,7 @@
         android:background="@color/color_background_button"
         android:text="@string/my_divide"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_product"
@@ -52,7 +52,7 @@
         android:background="@color/color_background_button"
         android:text="@string/product"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_back"
@@ -64,7 +64,7 @@
         android:background="@color/colorAccent"
         android:text="@string/back"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_7"
@@ -76,7 +76,7 @@
         android:background="@color/number"
         android:text="@string/seven"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_8"
@@ -88,7 +88,7 @@
         android:background="@color/number"
         android:text="@string/eight"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_9"
@@ -100,7 +100,7 @@
         android:background="@color/number"
         android:text="@string/nine"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_minus"
@@ -112,7 +112,7 @@
         android:background="@color/color_background_button"
         android:text="@string/minus"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_4"
@@ -124,7 +124,7 @@
         android:background="@color/number"
         android:text="@string/four"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_5"
@@ -136,7 +136,7 @@
         android:background="@color/number"
         android:text="@string/five"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_6"
@@ -148,7 +148,7 @@
         android:background="@color/number"
         android:text="@string/six"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_plus"
@@ -160,7 +160,7 @@
         android:background="@color/color_background_button"
         android:text="@string/plus"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_1"
@@ -172,7 +172,7 @@
         android:background="@color/number"
         android:text="@string/one"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_2"
@@ -184,7 +184,7 @@
         android:background="@color/number"
         android:text="@string/two"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_3"
@@ -196,7 +196,7 @@
         android:background="@color/number"
         android:text="@string/three"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_0"
@@ -208,7 +208,7 @@
         android:background="@color/number"
         android:text="@string/zero"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_point"
@@ -220,7 +220,7 @@
         android:background="@color/number"
         android:text="@string/point"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_sign"
@@ -232,7 +232,7 @@
         android:background="@color/number"
         android:text="@string/sign"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_equal"
@@ -244,16 +244,16 @@
         android:background="@color/color_background_button"
         android:text="@string/equal"
         android:textColor="@color/colorTxt"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/button_history"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_below="@+id/screen"
-        android:background="@color/number"
+        android:background="@android:color/darker_gray"
         android:text="@string/history"
         android:textColor="@color/colorTxt"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
 </RelativeLayout>

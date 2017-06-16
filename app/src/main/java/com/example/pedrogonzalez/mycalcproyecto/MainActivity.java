@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String EIGHT = "8";
     public static final String NINE = "9";
     public static final String POINT = ".";
+    private static final String PRODUCT = "*";
+    private static final String DIVIDE = "/";
+    private static final String PLUS = "+";
+    private static final String MINUS = "-";
 
 
     Button zero, one, two, three, four,
@@ -28,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
             point, sign, product, divide, minus,
             plus, erase, equals, history, clean;
 
-    int op = 0, pos = 0, reset = 0;
+    int op = 0, pos = 0, reset = 0, opp = 0;
 
     float num1 = 0, num2 = 0;
     TextView exit;
-    String InComing;
-    public static String past[] = {"1","2","3","4","5"};
+    String InComing, num = "";
+    public static String past[] = {"1", "2", "3", "4", "5"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,24 +54,6 @@ public class MainActivity extends AppCompatActivity {
 //                Exit = (TextView) findViewById(R.id.screen);
 //                inComing = past[0] + "\n" + past[1] + "";
 //                Exit.setText(inComing);
-            }
-        });
-
-        point = (Button) findViewById(R.id.button_point);
-        point.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exit = (TextView) findViewById(R.id.screen);
-
-                if (!exit.getText().toString().contains(".")) {
-                    if (reset > 0) {
-                        InComing = POINT;
-                        reset = 0;
-                    } else {
-                        InComing = exit.getText().toString() + POINT;
-                    }
-                    exit.setText(InComing);
-                }
             }
         });
 
@@ -231,13 +217,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-                if (exit.getText().length() > 0) {
+
+                {
                     exit.setText("");
-                    if (reset > 0) {
-                        exit.setText("");
-                        num1 = 0;
-                        num2 = 0;
-                    }
+                    num1 = 0;
+                    num2 = 0;
+                    op = 0;
+                    reset = 0;
                 }
             }
         });
@@ -248,12 +234,28 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
                 if (exit.getText().length() > 0) {
+
                     InComing = InComing.substring(0, exit.getText().length() - 1);
                     exit.setText(InComing);
+
+                    if ((!InComing.contains("+")) || (!InComing.contains("*"))
+                            || (!InComing.contains("/")) || (!InComing.contains("-"))) {
+                        op = 0;
+                    }
+
+                    if (op > 1) {
+                        if (InComing.substring(num.length(), InComing.length()).contains(".")) {
+                            opp = 0;
+                        }
+                    }
+
+
                     if (reset > 0) {
                         exit.setText("");
                         num1 = 0;
                         num2 = 0;
+                        op = 0;
+                        reset = 0;
                     }
                 }
             }
@@ -264,10 +266,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-                if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
-                    op = 1;
-                    num1 = Float.valueOf(exit.getText().toString());
-                    exit.setText("");
+
+                if (op < 1) {
+                    if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
+                        op = 1;
+                        num1 = Float.valueOf(exit.getText().toString());
+
+                        InComing = exit.getText().toString() + PLUS;
+                        exit.setText(InComing);
+                        num = exit.getText().toString();
+                        reset = 0;
+                    }
                 }
             }
         });
@@ -278,10 +287,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-                if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
-                    op = 2;
-                    num1 = Float.valueOf(exit.getText().toString());
-                    exit.setText("");
+                if (op < 1) {
+                    if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
+                        op = 2;
+                        num1 = Float.valueOf(exit.getText().toString());
+
+                        InComing = exit.getText().toString() + MINUS;
+                        exit.setText(InComing);
+                        num = exit.getText().toString();
+                        reset = 0;
+                    }
                 }
             }
         });
@@ -292,10 +307,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-                if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
-                    op = 3;
-                    num1 = Float.valueOf(exit.getText().toString());
-                    exit.setText("");
+                if (op < 1) {
+                    if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
+                        op = 3;
+                        num1 = Float.valueOf(exit.getText().toString());
+
+                        InComing = exit.getText().toString() + PRODUCT;
+                        exit.setText(InComing);
+                        num = exit.getText().toString();
+                        reset = 0;
+                    }
                 }
             }
         });
@@ -305,10 +326,45 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-                if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
-                    op = 4;
-                    num1 = Float.valueOf(exit.getText().toString());
-                    exit.setText("");
+                if (op < 1) {
+                    if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
+                        op = 4;
+                        num1 = Float.valueOf(exit.getText().toString());
+
+
+                        InComing = exit.getText().toString() + DIVIDE;
+                        exit.setText(InComing);
+                        num = exit.getText().toString();
+                        reset = 0;
+                    }
+                }
+
+            }
+        });
+
+        point = (Button) findViewById(R.id.button_point);
+        point.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                exit = (TextView) findViewById(R.id.screen);
+
+                if (!exit.getText().toString().contains(".")) {
+                    if (reset > 0) {
+                        InComing = POINT;
+                        exit.setText(InComing);
+                        reset = 0;
+                    } else {
+                        InComing = exit.getText().toString() + POINT;
+                        exit.setText(InComing);
+                    }
+                } else {
+                    if (opp < 1) {
+                        if (!exit.getText().toString().substring(num.length(), exit.length()).contains(".")) {
+                            InComing = exit.getText().toString() + POINT;
+                            exit.setText(InComing);
+                        }
+                    }
                 }
             }
         });
@@ -319,11 +375,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
 
-                if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
+                if ((exit.getText().length() > 0) && (!exit.getText().equals(POINT)) && op < 1) {
                     num2 = Float.valueOf(exit.getText().toString()) * (-1);
                     InComing = String.valueOf(num2);
                     InComing = absoluteValue(InComing);
                     exit.setText(InComing);
+                } else {
+                    if (num.length() < exit.getText().length()) {
+                        if (!exit.getText().toString().substring(num.length(), exit.length()).equals(POINT)) {
+
+//                    num2 = Float.valueOf(exit.getText().toString()) * (-1);
+                            num2 = Float.valueOf(exit.getText().toString().substring(num.length(), exit.getText().length())) * (-1);
+                            InComing = String.valueOf(num2);
+                            InComing = absoluteValue(InComing);
+                            InComing = num.concat(InComing);
+                            exit.setText(InComing);
+                        }
+                    }
                 }
             }
         });
@@ -334,25 +402,33 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
                 if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
-                    num2 = Float.valueOf(exit.getText().toString());
+                    num2 = Float.valueOf(exit.getText().toString().substring(num.length(), exit.getText().length()));
 
                     switch (op) {
                         case 1: {
                             InComing = String.valueOf(plus(num1, num2, pos));
+                            reset = 1;
+                            pos = pos + 1;
                         }
                         break;
                         case 2: {
                             InComing = String.valueOf(minus(num1, num2, pos));
+                            reset = 1;
+                            pos = pos + 1;
                         }
                         break;
 
                         case 3: {
                             InComing = String.valueOf(product(num1, num2, pos));
+                            reset = 1;
+                            pos = pos + 1;
                         }
                         break;
 
                         case 4: {
-                            InComing = (divide(num1, num2, pos));
+                            InComing = String.valueOf(divide(num1, num2, pos));
+                            reset = 1;
+                            pos = pos + 1;
                         }
                         break;
                     }
@@ -361,8 +437,6 @@ public class MainActivity extends AppCompatActivity {
                         op = 0;
                     }
                     exit.setText(InComing);
-                    reset = 1;
-                    pos = pos + 1;
                 }
             }
         });
