@@ -401,7 +401,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-                if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
+                if (pos > 0) {
+                    pos = 0;
+                }
+
+                if (exit.getText().length() > 0 && !exit.getText().equals(POINT) &&
+                        num.length() < exit.getText().length() &&
+                        !exit.getText().toString().substring(num.length(), exit.getText().length()).equals(POINT)) {
+
                     num2 = Float.valueOf(exit.getText().toString().substring(num.length(), exit.getText().length()));
 
                     switch (op) {
@@ -411,6 +418,7 @@ public class MainActivity extends AppCompatActivity {
                             pos = pos + 1;
                         }
                         break;
+
                         case 2: {
                             InComing = String.valueOf(minus(num1, num2, pos));
                             reset = 1;
@@ -437,9 +445,19 @@ public class MainActivity extends AppCompatActivity {
                         op = 0;
                     }
                     exit.setText(InComing);
+                    Exchange();
                 }
             }
         });
+    }
+
+    private void Exchange() {
+//        String aux;
+//        past[4] = "";
+//        past[3] = past[4];
+//        past[2] = past[3];
+//        past[1] = past[2];
+//        past[0] = past[1];
     }
 
     private float plus(float a, float b, int pos) {
@@ -456,7 +474,7 @@ public class MainActivity extends AppCompatActivity {
         partB = absoluteValue(partB);
         partC = absoluteValue(partC);
 
-        String his = String.format("%s)%s+%s = %s", pos + 1, partA, partB, partC);
+        String his = String.format("%s+%s = %s", partA, partB, partC);
         past[pos] = his;
 
         return result;
@@ -476,7 +494,7 @@ public class MainActivity extends AppCompatActivity {
         partB = absoluteValue(partB);
         partC = absoluteValue(partC);
 
-        String his = String.format("%s)%s-%s = %s", pos + 1, partA, partB, partC);
+        String his = String.format("%s-%s = %s",  partA, partB, partC);
         past[pos] = his;
 
         return result;
@@ -496,7 +514,7 @@ public class MainActivity extends AppCompatActivity {
         partB = absoluteValue(partB);
         partC = absoluteValue(partC);
 
-        String his = String.format("%s)%s*%s = %s", pos + 1, partA, partB, partC);
+        String his = String.format("%s*%s = %s", partA, partB, partC);
         past[pos] = his;
 
         return result;
@@ -522,7 +540,7 @@ public class MainActivity extends AppCompatActivity {
             partC = ("Error");
         }
 
-        String his = String.format("%s)%s/%s = %s", pos + 1, partA, partB, partC);
+        String his = String.format("%s/%s = %s", partA, partB, partC);
         past[pos] = his;
 
         return partC;
