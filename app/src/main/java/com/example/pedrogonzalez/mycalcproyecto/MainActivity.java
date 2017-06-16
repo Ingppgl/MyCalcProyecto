@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
             point, sign, product, divide, minus,
             plus, erase, equals, history, clean;
 
-    int op = 0, pos = 0, reset = 0, opp = 0;
+    int op = 0, pos = 0, reset = 0;
 
     float num1 = 0, num2 = 0;
     TextView exit;
     String InComing, num = "";
-    public static String past[] = {"1", "2", "3", "4", "5"};
+    public static String past[] = {"", "", "", "", "", ""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +50,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
                 startActivity(intent);
-
-//                Exit = (TextView) findViewById(R.id.screen);
-//                inComing = past[0] + "\n" + past[1] + "";
-//                Exit.setText(inComing);
             }
         });
 
@@ -217,14 +213,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-
-                {
-                    exit.setText("");
-                    num1 = 0;
-                    num2 = 0;
-                    op = 0;
-                    reset = 0;
-                }
+                exit.setText("");
+                num1 = 0;
+                num2 = 0;
+                op = 0;
+                reset = 0;
             }
         });
 
@@ -242,13 +235,6 @@ public class MainActivity extends AppCompatActivity {
                             || (!InComing.contains("/")) || (!InComing.contains("-"))) {
                         op = 0;
                     }
-
-                    if (op > 1) {
-                        if (InComing.substring(num.length(), InComing.length()).contains(".")) {
-                            opp = 0;
-                        }
-                    }
-
 
                     if (reset > 0) {
                         exit.setText("");
@@ -271,7 +257,6 @@ public class MainActivity extends AppCompatActivity {
                     if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
                         op = 1;
                         num1 = Float.valueOf(exit.getText().toString());
-
                         InComing = exit.getText().toString() + PLUS;
                         exit.setText(InComing);
                         num = exit.getText().toString();
@@ -280,7 +265,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 
         minus = (Button) findViewById(R.id.button_minus);
         minus.setOnClickListener(new View.OnClickListener() {
@@ -291,7 +275,6 @@ public class MainActivity extends AppCompatActivity {
                     if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
                         op = 2;
                         num1 = Float.valueOf(exit.getText().toString());
-
                         InComing = exit.getText().toString() + MINUS;
                         exit.setText(InComing);
                         num = exit.getText().toString();
@@ -311,7 +294,6 @@ public class MainActivity extends AppCompatActivity {
                     if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
                         op = 3;
                         num1 = Float.valueOf(exit.getText().toString());
-
                         InComing = exit.getText().toString() + PRODUCT;
                         exit.setText(InComing);
                         num = exit.getText().toString();
@@ -330,8 +312,6 @@ public class MainActivity extends AppCompatActivity {
                     if (exit.getText().length() > 0 && !exit.getText().equals(POINT)) {
                         op = 4;
                         num1 = Float.valueOf(exit.getText().toString());
-
-
                         InComing = exit.getText().toString() + DIVIDE;
                         exit.setText(InComing);
                         num = exit.getText().toString();
@@ -346,9 +326,7 @@ public class MainActivity extends AppCompatActivity {
         point.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 exit = (TextView) findViewById(R.id.screen);
-
                 if (!exit.getText().toString().contains(".")) {
                     if (reset > 0) {
                         InComing = POINT;
@@ -359,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
                         exit.setText(InComing);
                     }
                 } else {
-                    if (opp < 1) {
+                    if (num.length() < exit.length()) {
                         if (!exit.getText().toString().substring(num.length(), exit.length()).contains(".")) {
                             InComing = exit.getText().toString() + POINT;
                             exit.setText(InComing);
@@ -383,8 +361,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     if (num.length() < exit.getText().length()) {
                         if (!exit.getText().toString().substring(num.length(), exit.length()).equals(POINT)) {
-
-//                    num2 = Float.valueOf(exit.getText().toString()) * (-1);
                             num2 = Float.valueOf(exit.getText().toString().substring(num.length(), exit.getText().length())) * (-1);
                             InComing = String.valueOf(num2);
                             InComing = absoluteValue(InComing);
@@ -401,11 +377,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
-                if (pos > 0) {
-                    pos = 0;
-                }
-
-                if (exit.getText().length() > 0 && !exit.getText().equals(POINT) &&
+                pos = 5;
+                if (exit.getText().length() > 0 &&
+                        !exit.getText().equals(POINT) &&
                         num.length() < exit.getText().length() &&
                         !exit.getText().toString().substring(num.length(), exit.getText().length()).equals(POINT)) {
 
@@ -415,35 +389,28 @@ public class MainActivity extends AppCompatActivity {
                         case 1: {
                             InComing = String.valueOf(plus(num1, num2, pos));
                             reset = 1;
-                            pos = pos + 1;
                         }
                         break;
 
                         case 2: {
                             InComing = String.valueOf(minus(num1, num2, pos));
                             reset = 1;
-                            pos = pos + 1;
                         }
                         break;
 
                         case 3: {
                             InComing = String.valueOf(product(num1, num2, pos));
                             reset = 1;
-                            pos = pos + 1;
                         }
                         break;
 
                         case 4: {
                             InComing = String.valueOf(divide(num1, num2, pos));
                             reset = 1;
-                            pos = pos + 1;
                         }
                         break;
                     }
-                    if (!InComing.toLowerCase().equals("error") && op != 0) {
-                        InComing = absoluteValue(InComing);
-                        op = 0;
-                    }
+                    op = 0;
                     exit.setText(InComing);
                     Exchange();
                 }
@@ -452,15 +419,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Exchange() {
-//        String aux;
-//        past[4] = "";
-//        past[3] = past[4];
-//        past[2] = past[3];
-//        past[1] = past[2];
-//        past[0] = past[1];
+        past[0] = past[1];
+        past[1] = past[2];
+        past[2] = past[3];
+        past[3] = past[4];
+        past[4] = past[5];
     }
 
-    private float plus(float a, float b, int pos) {
+    private String plus(float a, float b, int pos) {
         float result;
         result = a + b;
 
@@ -477,10 +443,10 @@ public class MainActivity extends AppCompatActivity {
         String his = String.format("%s+%s = %s", partA, partB, partC);
         past[pos] = his;
 
-        return result;
+        return partC;
     }
 
-    private float minus(float a, float b, int pos) {
+    private String minus(float a, float b, int pos) {
         float result;
         result = a - b;
 
@@ -494,13 +460,13 @@ public class MainActivity extends AppCompatActivity {
         partB = absoluteValue(partB);
         partC = absoluteValue(partC);
 
-        String his = String.format("%s-%s = %s",  partA, partB, partC);
+        String his = String.format("%s-%s = %s", partA, partB, partC);
         past[pos] = his;
 
-        return result;
+        return partC;
     }
 
-    private float product(float a, float b, int pos) {
+    private String product(float a, float b, int pos) {
         float result;
 
         result = a * b;
@@ -517,7 +483,7 @@ public class MainActivity extends AppCompatActivity {
         String his = String.format("%s*%s = %s", partA, partB, partC);
         past[pos] = his;
 
-        return result;
+        return partC;
     }
 
     private String divide(float a, float b, int pos) {
