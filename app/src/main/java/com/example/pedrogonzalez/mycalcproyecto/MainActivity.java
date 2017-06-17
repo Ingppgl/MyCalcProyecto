@@ -327,6 +327,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit = (TextView) findViewById(R.id.screen);
+
+
                 if (!exit.getText().toString().contains(".")) {
                     if (reset > 0) {
                         InComing = POINT;
@@ -342,6 +344,11 @@ public class MainActivity extends AppCompatActivity {
                             InComing = exit.getText().toString() + POINT;
                             exit.setText(InComing);
                         }
+                    }
+                    if (reset > 0) {
+                        InComing = POINT;
+                        exit.setText(InComing);
+                        reset = 0;
                     }
                 }
             }
